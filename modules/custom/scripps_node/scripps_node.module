@@ -1,0 +1,38 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\NodeInterface;
+use Drupal\Core\Url;
+
+function scripps_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $device_form_id = ['node_device_detail_page_edit_form', 'node_device_detail_page_form'];
+  if (in_array($form_id, $device_form_id, TRUE)) {
+    $current_user = \Drupal::currentUser();
+    $roles = $current_user->getRoles();
+    if (!in_array('administrator', $roles)) {
+      $form['actions']['submit']['#submit'][]  = 'scripps_node_form_submit';
+    }
+  }
+}
+
+function scripps_node_node_presave(NodeInterface $node) {
+  if ($node->getType() == 'device_detail_page') {
+    $current_user = \Drupal::currentUser();
+    $roles = $current_user->getRoles();
+
+    // Content created by anonymous users should be saved but unpublished.
+    if (in_array('anonymous', $roles)) {
+      $node->setUnpublished();
+    }
+    // Authenticated Users, but not admins.
+    elseif (!in_array('administrator', $roles)) {
+      $node->setPublished();
+    }
+  }
+}
+
+function scripps_node_form_submit($form, FormStateInterface $form_state) {
+  //  todo: change URL to actual URL of submission thank you page.
+  $url = Url::fromUri('internal:/device-submission-thank-you');
+  $form_state->setRedirectUrl($url);
+}
