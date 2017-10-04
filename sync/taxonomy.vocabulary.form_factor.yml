@@ -1,0 +1,9 @@
+uuid: 32650ff2-b053-4cb6-a5e5-7fa09d6c418a
+langcode: en
+status: true
+dependencies: {  }
+name: 'Form Factor'
+vid: form_factor
+description: ''
+hierarchy: 0
+weight: 0

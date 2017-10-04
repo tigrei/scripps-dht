@@ -1,0 +1,9 @@
+uuid: 5ca7a819-cbf0-4cd9-a857-fad34f9206bc
+langcode: en
+status: true
+dependencies: {  }
+name: Components
+vid: components
+description: ''
+hierarchy: 0
+weight: 0

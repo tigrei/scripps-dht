@@ -1,0 +1,19 @@
+uuid: 5195eaaa-f53a-4151-ab95-4f6de7f5881c
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_link_to_product_website
+field_name: field_link_to_product_website
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

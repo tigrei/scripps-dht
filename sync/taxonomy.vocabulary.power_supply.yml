@@ -1,0 +1,9 @@
+uuid: e5c3c030-3808-4a64-ac49-ba77d7189c39
+langcode: en
+status: true
+dependencies: {  }
+name: 'Power Supply'
+vid: power_supply
+description: ''
+hierarchy: 0
+weight: 0

@@ -1,0 +1,21 @@
+uuid: cd90c735-041c-4728-83b3-d267092ad429
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_status
+    - node.type.device_detail_page
+  module:
+    - options
+id: node.device_detail_page.field_status
+field_name: field_status
+entity_type: node
+bundle: device_detail_page
+label: Status
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

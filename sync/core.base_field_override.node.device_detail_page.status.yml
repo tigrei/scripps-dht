@@ -1,0 +1,22 @@
+uuid: 37db33f7-c845-4e1b-9438-88c50161b17b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.device_detail_page
+id: node.device_detail_page.status
+field_name: status
+entity_type: node
+bundle: device_detail_page
+label: 'Publishing status'
+description: 'A boolean indicating the published state.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: 93d7b1f1-d89c-45c7-8ec4-5c554d3a048d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.device_detail_page
+id: node.device_detail_page.title
+field_name: title
+entity_type: node
+bundle: device_detail_page
+label: 'Device Name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

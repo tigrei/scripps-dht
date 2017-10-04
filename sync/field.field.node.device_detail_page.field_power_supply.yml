@@ -1,0 +1,28 @@
+uuid: 511d942a-78e4-4eb0-8140-199f1e1ff2c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_power_supply
+    - node.type.device_detail_page
+    - taxonomy.vocabulary.power_supply
+id: node.device_detail_page.field_power_supply
+field_name: field_power_supply
+entity_type: node
+bundle: device_detail_page
+label: 'Power Supply'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      power_supply: power_supply
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

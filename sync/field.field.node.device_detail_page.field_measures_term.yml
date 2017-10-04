@@ -1,0 +1,28 @@
+uuid: 2af1b24f-081f-492f-b15f-98dd86462a73
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_measures_term
+    - node.type.device_detail_page
+    - taxonomy.vocabulary.measures
+id: node.device_detail_page.field_measures_term
+field_name: field_measures_term
+entity_type: node
+bundle: device_detail_page
+label: 'Measures Term'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      measures: measures
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,28 @@
+uuid: 0e4ae499-ceaf-4991-ab80-8479ce9c90ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_data_access
+    - node.type.device_detail_page
+    - taxonomy.vocabulary.data_access
+id: node.device_detail_page.field_data_access
+field_name: field_data_access
+entity_type: node
+bundle: device_detail_page
+label: 'Data Access'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      data_access: data_access
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

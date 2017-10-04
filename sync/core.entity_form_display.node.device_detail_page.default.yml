@@ -1,0 +1,379 @@
+uuid: 2184a925-65db-481a-8117-0646ce55ba0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.device_detail_page.field_category
+    - field.field.node.device_detail_page.field_compatability
+    - field.field.node.device_detail_page.field_components
+    - field.field.node.device_detail_page.field_data_access
+    - field.field.node.device_detail_page.field_data_export_and_sharing
+    - field.field.node.device_detail_page.field_data_transmission
+    - field.field.node.device_detail_page.field_description
+    - field.field.node.device_detail_page.field_device_image
+    - field.field.node.device_detail_page.field_device_tags
+    - field.field.node.device_detail_page.field_form_factor
+    - field.field.node.device_detail_page.field_link_to_product_website
+    - field.field.node.device_detail_page.field_manufacturer_vendor
+    - field.field.node.device_detail_page.field_measures_term
+    - field.field.node.device_detail_page.field_power_supply
+    - field.field.node.device_detail_page.field_privacy
+    - field.field.node.device_detail_page.field_regulatory_approvals
+    - field.field.node.device_detail_page.field_relevant_demographics
+    - field.field.node.device_detail_page.field_status
+    - image.style.thumbnail
+    - node.type.device_detail_page
+  module:
+    - field_group
+    - image
+    - link
+    - path
+third_party_settings:
+  field_group:
+    group_category:
+      children:
+        - field_category
+      parent_name: ''
+      weight: 11
+      format_type: details
+      format_settings:
+        label: Category
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: Category
+      region: content
+    group_form_factor:
+      children:
+        - field_form_factor
+      parent_name: ''
+      weight: 12
+      format_type: details
+      format_settings:
+        label: 'Form Factor'
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Form Factor'
+      region: content
+    group_measures:
+      children:
+        - field_measures_term
+      parent_name: ''
+      weight: 13
+      format_type: details
+      format_settings:
+        label: Measures
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: Measures
+      region: content
+    group_relevant_demographics:
+      children:
+        - field_relevant_demographics
+      parent_name: ''
+      weight: 14
+      format_type: details
+      format_settings:
+        label: 'Relevant Demographics'
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Relevant Demographics'
+      region: content
+    group_components:
+      children:
+        - field_components
+      parent_name: ''
+      weight: 15
+      format_type: details
+      format_settings:
+        label: Components
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: Components
+      region: content
+    group_compatability:
+      children:
+        - field_compatability
+      parent_name: ''
+      weight: 16
+      format_type: details
+      format_settings:
+        label: Compatability
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: Compatability
+      region: content
+    group_regulatory_approvals:
+      children:
+        - field_regulatory_approvals
+      parent_name: ''
+      weight: 17
+      format_type: details
+      format_settings:
+        label: 'Regulatory Approvals'
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Regulatory Approvals'
+      region: content
+    group_power_supply:
+      children:
+        - field_power_supply
+      parent_name: ''
+      weight: 18
+      format_type: details
+      format_settings:
+        label: 'Power Supply'
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Power Supply'
+      region: content
+    group_data_transmission:
+      children:
+        - field_data_transmission
+      parent_name: ''
+      weight: 19
+      format_type: details
+      format_settings:
+        label: 'Data Transmission'
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Data Transmission'
+      region: content
+    group_data:
+      children:
+        - field_data_access
+      parent_name: ''
+      weight: 20
+      format_type: details
+      format_settings:
+        label: 'Data Access'
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Data Access'
+      region: content
+    group_data_export_and_sharing:
+      children:
+        - field_data_export_and_sharing
+      parent_name: ''
+      weight: 21
+      format_type: details
+      format_settings:
+        label: 'Data Export and Sharing'
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Data Export and Sharing'
+      region: content
+    group_privacy:
+      children:
+        - field_privacy
+      parent_name: ''
+      weight: 22
+      format_type: details
+      format_settings:
+        label: Privacy
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: Privacy
+      region: content
+    group_tags:
+      children:
+        - field_device_tags
+      parent_name: ''
+      weight: 23
+      format_type: details
+      format_settings:
+        label: Tags
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: Tags
+      region: content
+id: node.device_detail_page.default
+targetEntityType: node
+bundle: device_detail_page
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_category:
+    weight: 12
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_compatability:
+    weight: 17
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_components:
+    weight: 16
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_data_access:
+    weight: 21
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_data_export_and_sharing:
+    weight: 22
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_data_transmission:
+    weight: 20
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_description:
+    weight: 10
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_device_image:
+    weight: 6
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_device_tags:
+    weight: 24
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_form_factor:
+    type: options_select
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_link_to_product_website:
+    weight: 9
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_manufacturer_vendor:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_measures_term:
+    weight: 14
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_power_supply:
+    weight: 19
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_privacy:
+    weight: 23
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_regulatory_approvals:
+    weight: 18
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_relevant_demographics:
+    weight: 15
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_status:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 3
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden: {  }
