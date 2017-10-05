@@ -30,10 +30,6 @@ function scripps_node_node_presave(NodeInterface $node) {
     if (in_array('anonymous', $roles)) {
       $node->setUnpublished();
     }
-    // Authenticated Users, but not admins.
-    elseif (!in_array('administrator', $roles)) {
-      $node->setPublished();
-    }
   }
 }
 
