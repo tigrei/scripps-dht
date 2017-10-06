@@ -24,6 +24,7 @@ module:
   help: 0
   history: 0
   image: 0
+  imagefield_slideshow: 0
   kint: 0
   link: 0
   menu_ui: 0

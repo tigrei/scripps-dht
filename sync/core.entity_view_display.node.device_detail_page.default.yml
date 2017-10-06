@@ -23,17 +23,184 @@ dependencies:
     - field.field.node.device_detail_page.field_status
     - node.type.device_detail_page
   module:
-    - image
+    - field_group
+    - imagefield_slideshow
     - link
     - options
     - user
+third_party_settings:
+  field_group:
+    group_basic_info:
+      children:
+        - field_device_image
+        - field_category
+        - field_status
+        - field_manufacturer_vendor
+        - field_link_to_product_website
+      parent_name: ''
+      weight: 0
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: ''
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: basic_info
+      region: content
+    group_measures:
+      children:
+        - field_measures_term
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: Measures
+      region: content
+    group_form_factors:
+      children:
+        - field_form_factor
+      parent_name: ''
+      weight: 4
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Form Factors'
+      region: content
+    group_data_access:
+      children:
+        - field_data_access
+      parent_name: ''
+      weight: 5
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Data Access'
+      region: content
+    group_power_supply:
+      children:
+        - field_power_supply
+      parent_name: ''
+      weight: 6
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Power Supply'
+      region: content
+    group_compatibility:
+      children:
+        - field_compatability
+      parent_name: ''
+      weight: 7
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: Compatibility
+      region: content
+    group_privacy:
+      children:
+        - field_privacy
+      parent_name: ''
+      weight: 8
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: Privacy
+      region: content
+    group_data_transmission:
+      children:
+        - field_data_transmission
+      parent_name: ''
+      weight: 9
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Data Transmission'
+      region: content
+    group_data_export:
+      children:
+        - field_data_export_and_sharing
+      parent_name: ''
+      weight: 10
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Data Export and Sharing'
+      region: content
+    group_relevant_de:
+      children:
+        - field_relevant_demographics
+      parent_name: ''
+      weight: 11
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Relevant Demographics'
+      region: content
+    group_components:
+      children:
+        - field_components
+      parent_name: ''
+      weight: 12
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: Components
+      region: content
+    group_regulatory_approvals:
+      children:
+        - field_regulatory_approvals
+      parent_name: ''
+      weight: 13
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: 'Regulatory Approvals'
+      region: content
 id: node.device_detail_page.default
 targetEntityType: node
 bundle: device_detail_page
 mode: default
 content:
   field_category:
-    weight: 107
+    weight: 8
     label: above
     settings:
       link: true
@@ -41,7 +208,7 @@ content:
     type: entity_reference_label
     region: content
   field_compatability:
-    weight: 112
+    weight: 10
     label: above
     settings:
       link: true
@@ -49,7 +216,7 @@ content:
     type: entity_reference_label
     region: content
   field_components:
-    weight: 111
+    weight: 13
     label: above
     settings:
       link: true
@@ -57,7 +224,7 @@ content:
     type: entity_reference_label
     region: content
   field_data_access:
-    weight: 116
+    weight: 12
     label: above
     settings:
       link: true
@@ -65,7 +232,7 @@ content:
     type: entity_reference_label
     region: content
   field_data_export_and_sharing:
-    weight: 117
+    weight: 14
     label: above
     settings:
       link: true
@@ -73,7 +240,7 @@ content:
     type: entity_reference_label
     region: content
   field_data_transmission:
-    weight: 115
+    weight: 13
     label: above
     settings:
       link: true
@@ -81,23 +248,26 @@ content:
     type: entity_reference_label
     region: content
   field_description:
-    weight: 106
+    weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
     region: content
   field_device_image:
-    weight: 102
+    weight: 7
     label: above
     settings:
-      image_style: ''
-      image_link: ''
+      imagefield_slideshow_style: ''
+      imagefield_slideshow_style_effects: fade
+      imagefield_slideshow_style_pause: '1'
+      imagefield_slideshow_prev_next: '1'
+      imagefield_slideshow_transition_speed: '100'
     third_party_settings: {  }
-    type: image
+    type: imagefield_slideshow_field_formatter
     region: content
   field_device_tags:
-    weight: 119
+    weight: 15
     label: above
     settings:
       link: true
@@ -105,7 +275,7 @@ content:
     type: entity_reference_label
     region: content
   field_form_factor:
-    weight: 108
+    weight: 4
     label: above
     settings:
       link: true
@@ -113,7 +283,7 @@ content:
     type: entity_reference_label
     region: content
   field_link_to_product_website:
-    weight: 105
+    weight: 11
     label: above
     settings:
       trim_length: 80
@@ -125,7 +295,7 @@ content:
     type: link
     region: content
   field_manufacturer_vendor:
-    weight: 104
+    weight: 10
     label: above
     settings:
       link_to_entity: false
@@ -133,7 +303,7 @@ content:
     type: string
     region: content
   field_measures_term:
-    weight: 109
+    weight: 5
     label: above
     settings:
       link: true
@@ -141,7 +311,7 @@ content:
     type: entity_reference_label
     region: content
   field_power_supply:
-    weight: 114
+    weight: 12
     label: above
     settings:
       link: true
@@ -149,7 +319,7 @@ content:
     type: entity_reference_label
     region: content
   field_privacy:
-    weight: 118
+    weight: 15
     label: above
     settings:
       link: true
@@ -157,7 +327,7 @@ content:
     type: entity_reference_label
     region: content
   field_regulatory_approvals:
-    weight: 113
+    weight: 14
     label: above
     settings:
       link: true
@@ -165,7 +335,7 @@ content:
     type: entity_reference_label
     region: content
   field_relevant_demographics:
-    weight: 110
+    weight: 12
     label: above
     settings:
       link: true
@@ -173,13 +343,15 @@ content:
     type: entity_reference_label
     region: content
   field_status:
-    weight: 103
+    weight: 9
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
   links:
-    weight: 100
+    weight: 1
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }

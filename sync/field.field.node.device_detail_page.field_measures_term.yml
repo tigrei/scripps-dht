@@ -10,7 +10,7 @@ id: node.device_detail_page.field_measures_term
 field_name: field_measures_term
 entity_type: node
 bundle: device_detail_page
-label: 'Measures Term'
+label: Measures
 description: ''
 required: false
 translatable: false

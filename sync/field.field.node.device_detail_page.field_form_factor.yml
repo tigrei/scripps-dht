@@ -10,7 +10,7 @@ id: node.device_detail_page.field_form_factor
 field_name: field_form_factor
 entity_type: node
 bundle: device_detail_page
-label: 'Form Factor Term'
+label: 'Form Factor'
 description: ''
 required: false
 translatable: false

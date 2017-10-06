@@ -10,7 +10,7 @@ id: node.device_detail_page.field_category
 field_name: field_category
 entity_type: node
 bundle: device_detail_page
-label: 'Category Term'
+label: Category
 description: ''
 required: false
 translatable: false
