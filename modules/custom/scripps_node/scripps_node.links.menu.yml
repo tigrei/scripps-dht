@@ -1,0 +1,6 @@
+scripps_node.admin_settings_form:
+  title: 'Submission thank you message configuration'
+  route_name: scripps_node.admin_settings_form
+  description: 'Thank you message admin page.'
+  parent: system.admin_config_system
+  weight: 99
