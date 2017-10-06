@@ -1,0 +1,9 @@
+uuid: 98a12d4d-0f2e-426a-b5ba-0fb5c7f052cb
+langcode: en
+status: true
+dependencies: {  }
+name: 'Data Transmission'
+vid: data_transmission
+description: ''
+hierarchy: 0
+weight: 0

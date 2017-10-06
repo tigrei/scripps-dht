@@ -1,0 +1,19 @@
+uuid: 20309698-ab6a-4dde-a748-9db50b81dee8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_manufacturer_vendor
+    - node.type.device_detail_page
+id: node.device_detail_page.field_manufacturer_vendor
+field_name: field_manufacturer_vendor
+entity_type: node
+bundle: device_detail_page
+label: Manufacturer/vendor
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

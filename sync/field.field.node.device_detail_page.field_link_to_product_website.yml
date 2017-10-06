@@ -1,0 +1,23 @@
+uuid: 7d34b53b-f586-4229-8d12-5f5aa3e8bfa7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_link_to_product_website
+    - node.type.device_detail_page
+  module:
+    - link
+id: node.device_detail_page.field_link_to_product_website
+field_name: field_link_to_product_website
+entity_type: node
+bundle: device_detail_page
+label: 'Link to Product Website'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

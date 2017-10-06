@@ -1,0 +1,28 @@
+uuid: bcd4f487-14ed-437b-886c-a86821fe0d2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_privacy
+    - node.type.device_detail_page
+    - taxonomy.vocabulary.privacy
+id: node.device_detail_page.field_privacy
+field_name: field_privacy
+entity_type: node
+bundle: device_detail_page
+label: Privacy
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      privacy: privacy
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

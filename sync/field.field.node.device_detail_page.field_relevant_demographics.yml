@@ -1,0 +1,28 @@
+uuid: 254aa969-bb98-41fe-bdd1-aecb998be3d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_relevant_demographics
+    - node.type.device_detail_page
+    - taxonomy.vocabulary.relevant_demographics
+id: node.device_detail_page.field_relevant_demographics
+field_name: field_relevant_demographics
+entity_type: node
+bundle: device_detail_page
+label: 'Relevant Demographics'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      relevant_demographics: relevant_demographics
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

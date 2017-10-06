@@ -1,0 +1,28 @@
+uuid: 7c851b76-ae55-4d58-82a2-b43050a56286
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_data_transmission
+    - node.type.device_detail_page
+    - taxonomy.vocabulary.data_transmission
+id: node.device_detail_page.field_data_transmission
+field_name: field_data_transmission
+entity_type: node
+bundle: device_detail_page
+label: 'Data Transmission'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      data_transmission: data_transmission
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

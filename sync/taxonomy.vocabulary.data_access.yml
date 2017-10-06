@@ -1,0 +1,9 @@
+uuid: ebbe394d-bf4b-4d32-a0b6-94d1fe6723ba
+langcode: en
+status: true
+dependencies: {  }
+name: 'Data Access'
+vid: data_access
+description: ''
+hierarchy: 0
+weight: 0

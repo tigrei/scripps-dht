@@ -1,0 +1,28 @@
+uuid: b4e48de5-44ee-4ac2-b461-f10952b7c382
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.device_detail_page.field_description
+    - field.field.node.device_detail_page.field_device_image
+    - field.field.node.device_detail_page.field_link_to_product_website
+    - field.field.node.device_detail_page.field_manufacturer_vendor
+    - field.field.node.device_detail_page.field_status
+    - node.type.device_detail_page
+  module:
+    - user
+id: node.device_detail_page.teaser
+targetEntityType: node
+bundle: device_detail_page
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_description: true
+  field_device_image: true
+  field_link_to_product_website: true
+  field_manufacturer_vendor: true
+  field_status: true

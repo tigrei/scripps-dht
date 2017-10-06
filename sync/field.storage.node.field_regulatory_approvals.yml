@@ -1,0 +1,20 @@
+uuid: b278d78b-d941-4280-9fc9-fb667c81399d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_regulatory_approvals
+field_name: field_regulatory_approvals
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

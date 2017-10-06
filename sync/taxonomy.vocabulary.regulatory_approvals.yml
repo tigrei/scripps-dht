@@ -1,0 +1,9 @@
+uuid: 111a3075-5514-4276-9649-879d9c90290d
+langcode: en
+status: true
+dependencies: {  }
+name: 'Regulatory Approvals'
+vid: regulatory_approvals
+description: ''
+hierarchy: 0
+weight: 0

@@ -1,0 +1,9 @@
+uuid: 27aff55f-c366-49d6-83bb-7099a3cbd966
+langcode: en
+status: true
+dependencies: {  }
+name: Privacy
+vid: privacy
+description: ''
+hierarchy: 0
+weight: 0
