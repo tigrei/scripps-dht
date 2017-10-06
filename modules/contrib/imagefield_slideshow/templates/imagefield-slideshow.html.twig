@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a formatted imagefield slideshow field.
+ *
+ * Available variables:
+ * - image: A collection of image data.
+ * - image_style: An optional image style.
+ * - url: An optional URL the image can be linked to.
+ *
+ * @see template_preprocess_image_formatter()
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="imagefield_slideshow-wrapper">
+  <div class="imagefield_slideshow">
+    {% for key,value in url %}
+      <img src="{{ value }}" />
+    {% endfor %}
+  </div>
+  {% if prev_next %}
+    <div class="imagefield_slideshow-prev">PREV</div>
+    <div class="imagefield_slideshow-next">NEXT</div>
+  {% endif %}
+</div>
