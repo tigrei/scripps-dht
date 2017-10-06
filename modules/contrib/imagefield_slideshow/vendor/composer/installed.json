@@ -1,0 +1,23 @@
+[
+    {
+        "name": "heykarthikwithu/cycle",
+        "version": "1.1",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/heykarthikwithu/cycle.git",
+            "reference": "432f2f6761d691803f233f6c8572cb30bc321faa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/heykarthikwithu/cycle/zipball/432f2f6761d691803f233f6c8572cb30bc321faa",
+            "reference": "432f2f6761d691803f233f6c8572cb30bc321faa",
+            "shasum": ""
+        },
+        "time": "2016-10-17T08:06:14+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "description": "jQuery Cycle Plugin"
+    }
+]
