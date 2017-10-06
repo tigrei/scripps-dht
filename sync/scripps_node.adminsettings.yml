@@ -1,0 +1,6 @@
+thank_you_text:
+  value: "<p>Thanks</p>\r\n\r\n<p><a href=\"http://scripps.local/\">Return to Home</a></p>\r\n"
+  format: full_html
+return_url: 'http://scripps.local/'
+return_url_text: 'Return to Home'
+title: 'Thank you'
