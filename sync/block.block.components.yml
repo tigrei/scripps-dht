@@ -1,0 +1,30 @@
+uuid: e6518fcf-8e56-4129-adaf-b53ee03d63a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.components
+  module:
+    - facets
+    - node
+  theme:
+    - bartik
+id: components
+theme: bartik
+region: filter
+weight: -9
+provider: null
+plugin: 'facet_block:components'
+settings:
+  id: 'facet_block:components'
+  label: Components
+  provider: facets
+  label_display: visible
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      device_detail_page: device_detail_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

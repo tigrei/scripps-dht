@@ -1,0 +1,30 @@
+uuid: 1a30e062-1cbc-48cf-a46b-26a495728f9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.data_transmission
+  module:
+    - facets
+    - node
+  theme:
+    - bartik
+id: datatransmission
+theme: bartik
+region: filter
+weight: -5
+provider: null
+plugin: 'facet_block:data_transmission'
+settings:
+  id: 'facet_block:data_transmission'
+  label: 'Data Transmission'
+  provider: facets
+  label_display: visible
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      device_detail_page: device_detail_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

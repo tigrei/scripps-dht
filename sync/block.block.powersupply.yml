@@ -1,0 +1,30 @@
+uuid: 7ebe51cb-a3bf-4c9a-9b19-765d9378428c
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.power_supply
+  module:
+    - facets
+    - node
+  theme:
+    - bartik
+id: powersupply
+theme: bartik
+region: filter
+weight: -6
+provider: null
+plugin: 'facet_block:power_supply'
+settings:
+  id: 'facet_block:power_supply'
+  label: 'Power Supply'
+  provider: facets
+  label_display: visible
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      device_detail_page: device_detail_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

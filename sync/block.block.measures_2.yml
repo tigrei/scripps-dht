@@ -12,7 +12,7 @@ dependencies:
 id: measures_2
 theme: bartik
 region: filter
-weight: 0
+weight: -12
 provider: null
 plugin: 'facet_block:measures'
 settings:

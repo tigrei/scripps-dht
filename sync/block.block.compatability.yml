@@ -1,0 +1,30 @@
+uuid: 7b25bb05-253d-4c90-910e-795b0fbe30d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.compatability
+  module:
+    - facets
+    - node
+  theme:
+    - bartik
+id: compatability
+theme: bartik
+region: filter
+weight: -8
+provider: null
+plugin: 'facet_block:compatability'
+settings:
+  id: 'facet_block:compatability'
+  label: Compatability
+  provider: facets
+  label_display: visible
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      device_detail_page: device_detail_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

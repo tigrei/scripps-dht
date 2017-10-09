@@ -1,0 +1,30 @@
+uuid: 59c43595-8ba8-4d35-a75d-e01c909e292c
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.regulatory_approvals
+  module:
+    - facets
+    - node
+  theme:
+    - bartik
+id: regulatoryapprovals
+theme: bartik
+region: filter
+weight: -7
+provider: null
+plugin: 'facet_block:regulatory_approvals'
+settings:
+  id: 'facet_block:regulatory_approvals'
+  label: 'Regulatory Approvals'
+  provider: facets
+  label_display: visible
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      device_detail_page: device_detail_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

@@ -17,6 +17,7 @@ dependencies:
     - field.storage.node.field_data_access
     - field.storage.node.field_data_export_and_sharing
     - field.storage.node.field_privacy
+    - field.storage.node.field_components
     - search_api.server.default_solr_server
     - core.entity_view_mode.node.search_index
   module:
@@ -211,6 +212,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_privacy
+  field_components:
+    label: Components
+    datasource_id: 'entity:node'
+    property_path: field_components
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_components
 datasource_settings:
   'entity:node':
     bundles:

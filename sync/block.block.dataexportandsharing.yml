@@ -1,0 +1,30 @@
+uuid: 0a75d0e5-beea-46dc-935d-e6d25295bf3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.data_export_and_sharing
+  module:
+    - facets
+    - node
+  theme:
+    - bartik
+id: dataexportandsharing
+theme: bartik
+region: filter
+weight: -3
+provider: null
+plugin: 'facet_block:data_export_and_sharing'
+settings:
+  id: 'facet_block:data_export_and_sharing'
+  label: 'Data Export and Sharing'
+  provider: facets
+  label_display: visible
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      device_detail_page: device_detail_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

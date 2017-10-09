@@ -12,7 +12,7 @@ dependencies:
 id: status_2
 theme: bartik
 region: filter
-weight: 0
+weight: -11
 provider: null
 plugin: 'facet_block:status'
 settings:

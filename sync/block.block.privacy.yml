@@ -1,0 +1,30 @@
+uuid: 84330f95-d8b9-45e8-8c7d-9f32dd71579e
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.privacy
+  module:
+    - facets
+    - node
+  theme:
+    - bartik
+id: privacy
+theme: bartik
+region: filter
+weight: -2
+provider: null
+plugin: 'facet_block:privacy'
+settings:
+  id: 'facet_block:privacy'
+  label: Privacy
+  provider: facets
+  label_display: visible
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      device_detail_page: device_detail_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

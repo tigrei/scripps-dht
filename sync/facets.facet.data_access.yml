@@ -1,4 +1,4 @@
-uuid: eac0e19d-bc84-4b7d-b406-4c2bfec2459a
+uuid: 88e57663-109b-46a5-bec2-c02c0016a189
 langcode: en
 status: true
 dependencies:
@@ -7,13 +7,13 @@ dependencies:
     - views.view.solr_search_content
   module:
     - search_api
-id: category
-name: Category
-url_alias: category
-weight: -2
+id: data_access
+name: 'Data Access'
+url_alias: data_access
+weight: 0
 min_count: 1
 show_only_one_result: false
-field_identifier: field_category
+field_identifier: field_data_access
 facet_source_id: 'search_api:views_page__solr_search_content__page_1'
 widget:
   type: checkbox
@@ -21,15 +21,15 @@ widget:
     show_numbers: true
     soft_limit: 0
     soft_limit_settings:
-      show_less_label: 'See Less'
-      show_more_label: 'See More...'
+      show_less_label: 'Show less'
+      show_more_label: 'Show more'
 query_operator: or
 use_hierarchy: false
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: true
 hard_limit: 0
 exclude: false
-only_visible_when_facet_source_is_visible: false
+only_visible_when_facet_source_is_visible: true
 processor_configs:
   active_widget_order:
     processor_id: active_widget_order

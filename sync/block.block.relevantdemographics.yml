@@ -1,0 +1,30 @@
+uuid: 5b87b4bc-3382-4163-90a2-51fb37cc2d83
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.relevant_demographics
+  module:
+    - facets
+    - node
+  theme:
+    - bartik
+id: relevantdemographics
+theme: bartik
+region: filter
+weight: -10
+provider: null
+plugin: 'facet_block:relevant_demographics'
+settings:
+  id: 'facet_block:relevant_demographics'
+  label: 'Relevant Demographics'
+  provider: facets
+  label_display: visible
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      device_detail_page: device_detail_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

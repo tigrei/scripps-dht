@@ -1,0 +1,30 @@
+uuid: b794f586-95c8-47f1-b81e-961809a3f8f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.data_access
+  module:
+    - facets
+    - node
+  theme:
+    - bartik
+id: dataaccess
+theme: bartik
+region: filter
+weight: -4
+provider: null
+plugin: 'facet_block:data_access'
+settings:
+  id: 'facet_block:data_access'
+  label: 'Data Access'
+  provider: facets
+  label_display: visible
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      device_detail_page: device_detail_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
