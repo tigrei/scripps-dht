@@ -1,0 +1,28 @@
+uuid: b537d0d3-479c-49f4-bddd-8f747143faa3
+langcode: en
+status: true
+dependencies:
+  content:
+    - blockgroup.block_group_content.filter
+  module:
+    - blockgroup
+    - system
+  theme:
+    - bartik
+id: filter
+theme: bartik
+region: sidebar_first
+weight: -8
+provider: null
+plugin: 'block_group:42cb2ba8-4187-4498-aef4-1c00b32761e7'
+settings:
+  id: 'block_group:42cb2ba8-4187-4498-aef4-1c00b32761e7'
+  label: 'Filter By'
+  provider: blockgroup
+  label_display: visible
+visibility:
+  request_path:
+    id: request_path
+    pages: /search
+    negate: false
+    context_mapping: {  }

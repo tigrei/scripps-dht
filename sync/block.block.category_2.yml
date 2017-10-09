@@ -1,0 +1,22 @@
+uuid: cf2fedd5-4692-4fff-b402-07715f5ec0c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.category
+  module:
+    - facets
+  theme:
+    - bartik
+id: category_2
+theme: bartik
+region: filter
+weight: 0
+provider: null
+plugin: 'facet_block:category'
+settings:
+  id: 'facet_block:category'
+  label: Category
+  provider: facets
+  label_display: visible
+visibility: {  }

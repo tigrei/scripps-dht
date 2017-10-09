@@ -1,0 +1,28 @@
+uuid: 463521b7-f21c-471a-bb51-d96863da856c
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.measures
+  module:
+    - facets
+    - system
+  theme:
+    - bartik
+id: measures_2
+theme: bartik
+region: filter
+weight: 0
+provider: null
+plugin: 'facet_block:measures'
+settings:
+  id: 'facet_block:measures'
+  label: Measures
+  provider: facets
+  label_display: visible
+visibility:
+  request_path:
+    id: request_path
+    pages: /search
+    negate: false
+    context_mapping: {  }

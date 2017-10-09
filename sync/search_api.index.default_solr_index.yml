@@ -1,0 +1,257 @@
+uuid: 0fb41ecd-b47c-4dd3-9914-ab37e7522787
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tags
+    - field.storage.node.field_measures_term
+    - field.storage.node.field_category
+    - field.storage.node.field_form_factor
+    - field.storage.node.field_status
+    - field.storage.node.field_relevant_demographics
+    - field.storage.node.comment
+    - field.storage.node.field_compatability
+    - field.storage.node.field_regulatory_approvals
+    - field.storage.node.field_power_supply
+    - field.storage.node.field_data_transmission
+    - field.storage.node.field_data_access
+    - field.storage.node.field_data_export_and_sharing
+    - field.storage.node.field_privacy
+    - search_api.server.default_solr_server
+    - core.entity_view_mode.node.search_index
+  module:
+    - taxonomy
+    - user
+    - search_api
+    - node
+_core:
+  default_config_hash: bojueKzSMLU0cTZKsz402wpsob2yIo1Ee9e9AHsPxL4
+id: default_solr_index
+name: 'Default Solr content index'
+description: 'Default content index created by the Solr Search Defaults module'
+read_only: false
+field_settings:
+  rendered_item:
+    label: 'Rendered item'
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:node':
+          article: search_index
+          page: search_index
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: !!float 8
+  created:
+    label: 'Authored on'
+    datasource_id: 'entity:node'
+    property_path: created
+    type: date
+  changed:
+    label: Changed
+    datasource_id: 'entity:node'
+    property_path: changed
+    type: date
+  status:
+    label: 'Publishing status'
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+  sticky:
+    label: 'Sticky at top of lists'
+    datasource_id: 'entity:node'
+    property_path: sticky
+    type: boolean
+  field_tags:
+    label: Tags
+    datasource_id: 'entity:node'
+    property_path: 'field_tags:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_tags
+      module:
+        - taxonomy
+  author:
+    label: 'Author name'
+    datasource_id: 'entity:node'
+    property_path: 'uid:entity:name'
+    type: string
+    dependencies:
+      module:
+        - user
+  uid:
+    label: 'Author ID'
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+  field_measures_term:
+    label: Measures
+    datasource_id: 'entity:node'
+    property_path: field_measures_term
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_measures_term
+  field_category:
+    label: Category
+    datasource_id: 'entity:node'
+    property_path: field_category
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_category
+  field_form_factor:
+    label: 'Form Factor'
+    datasource_id: 'entity:node'
+    property_path: field_form_factor
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_form_factor
+  field_status:
+    label: Status
+    datasource_id: 'entity:node'
+    property_path: field_status
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_status
+  field_relevant_demographics:
+    label: 'Relevant Demographics'
+    datasource_id: 'entity:node'
+    property_path: field_relevant_demographics
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_relevant_demographics
+  comment:
+    label: Comments
+    datasource_id: 'entity:node'
+    property_path: comment
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.comment
+  field_compatability:
+    label: Compatability
+    datasource_id: 'entity:node'
+    property_path: field_compatability
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_compatability
+  field_regulatory_approvals:
+    label: 'Regulatory Approvals'
+    datasource_id: 'entity:node'
+    property_path: field_regulatory_approvals
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_regulatory_approvals
+  field_power_supply:
+    label: 'Power Supply'
+    datasource_id: 'entity:node'
+    property_path: field_power_supply
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_power_supply
+  field_data_transmission:
+    label: 'Data Transmission'
+    datasource_id: 'entity:node'
+    property_path: field_data_transmission
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_data_transmission
+  field_data_access:
+    label: 'Data Access'
+    datasource_id: 'entity:node'
+    property_path: field_data_access
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_data_access
+  field_data_export_and_sharing:
+    label: 'Data Export and Sharing'
+    datasource_id: 'entity:node'
+    property_path: field_data_export_and_sharing
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_data_export_and_sharing
+  field_privacy:
+    label: Privacy
+    datasource_id: 'entity:node'
+    property_path: field_privacy
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_privacy
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url:
+    weights:
+      preprocess_index: -30
+  aggregated_field:
+    weights:
+      add_properties: 20
+  content_access:
+    weights:
+      preprocess_index: -6
+      preprocess_query: -4
+  html_filter:
+    weights:
+      preprocess_index: -3
+      preprocess_query: -6
+    fields:
+      - rendered_item
+    title: true
+    alt: true
+    tags:
+      h1: 5
+      h2: 3
+      h3: 2
+      string: 2
+      b: 2
+    all_fields: false
+  rendered_item:
+    weights:
+      add_properties: 0
+      pre_index_save: -10
+tracker_settings:
+  default: {  }
+options:
+  index_directly: true
+  cron_limit: 50
+server: default_solr_server

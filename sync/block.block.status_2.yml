@@ -1,0 +1,28 @@
+uuid: d5a7fde5-df5d-4584-b755-65578332adc9
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.status
+  module:
+    - facets
+    - system
+  theme:
+    - bartik
+id: status_2
+theme: bartik
+region: filter
+weight: 0
+provider: null
+plugin: 'facet_block:status'
+settings:
+  id: 'facet_block:status'
+  label: Status
+  provider: facets
+  label_display: visible
+visibility:
+  request_path:
+    id: request_path
+    pages: /search
+    negate: false
+    context_mapping: {  }

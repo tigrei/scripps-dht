@@ -1,0 +1,25 @@
+uuid: f84d799d-0503-40fd-a2ab-1904028b0a55
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:9cd055d2-364f-4e92-9eb6-9d0536fe204b'
+  module:
+    - block_content
+  theme:
+    - bartik
+id: searchsidebar
+theme: bartik
+region: sidebar_first
+weight: -6
+provider: null
+plugin: 'block_content:9cd055d2-364f-4e92-9eb6-9d0536fe204b'
+settings:
+  id: 'block_content:9cd055d2-364f-4e92-9eb6-9d0536fe204b'
+  label: 'Search Sidebar'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

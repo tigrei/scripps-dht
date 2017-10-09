@@ -258,7 +258,7 @@ content:
     weight: 7
     label: above
     settings:
-      imagefield_slideshow_style: ''
+      imagefield_slideshow_style: device_image
       imagefield_slideshow_style_effects: fade
       imagefield_slideshow_style_pause: '1'
       imagefield_slideshow_prev_next: '1'

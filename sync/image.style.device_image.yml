@@ -1,0 +1,35 @@
+uuid: 44cdeee9-0083-481d-b0c3-0a0e50b8f18f
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_effects
+name: device_image
+label: 'Device Image'
+effects:
+  8def9703-5f97-4717-a401-193f164c4211:
+    uuid: 8def9703-5f97-4717-a401-193f164c4211
+    id: image_effects_set_canvas
+    weight: -9
+    data:
+      canvas_size: exact
+      exact:
+        width: '250'
+        height: '250'
+        placement: center-center
+        x_offset: 0
+        y_offset: 0
+      relative:
+        left: 0
+        right: 0
+        top: 0
+        bottom: 0
+      canvas_color: ''
+  a6a52d2b-768e-423a-af98-f92048cdd4a9:
+    uuid: a6a52d2b-768e-423a-af98-f92048cdd4a9
+    id: image_scale
+    weight: -10
+    data:
+      width: 250
+      height: 250
+      upscale: false
