@@ -1,0 +1,332 @@
+diff --git a/core_search_facets/core_search_facets.api.php b/core_search_facets/core_search_facets.api.php
+new file mode 100644
+index 0000000..904d4c4
+--- /dev/null
++++ b/core_search_facets/core_search_facets.api.php
+@@ -0,0 +1,29 @@
++<?php
++
++/**
++ * @file
++ * Hooks provided by the core_search_facets module.
++ */
++
++/**
++ * @addtogroup hooks
++ * @{
++ */
++
++/**
++ * Adds field types as possible options for facets.
++ *
++ * @param array $allowed_field_types
++ *   The field types.
++ *
++ * @return array
++ *   Array that contains the field types.
++ */
++function hook_facets_core_allowed_field_types(array $allowed_field_types) {
++  $allowed_field_types[] = 'float';
++  return $allowed_field_types;
++}
++
++/**
++ * @} End of "addtogroup hooks".
++ */
+diff --git a/core_search_facets/core_search_facets.module b/core_search_facets/core_search_facets.module
+index c4f04d1..b436059 100644
+--- a/core_search_facets/core_search_facets.module
++++ b/core_search_facets/core_search_facets.module
+@@ -45,3 +45,13 @@ function core_search_facets_search_plugin_alter(array &$definitions) {
+     //$definitions['node_search']['class'] = 'Drupal\core_search_facets\Plugin\Search\NodeSearchFacets';
+   }
+ }
++
++/**
++ * Implements hook_facets_core_allowed_field_types().
++ */
++function core_search_facets_facets_core_allowed_field_types(array $allowed_field_types) {
++  $allowed_field_types[] = 'taxonomy_term';
++  $allowed_field_types[] = 'integer';
++
++  return $allowed_field_types;
++}
+diff --git a/core_search_facets/src/Plugin/facets/facet_source/CoreNodeSearchFacetSource.php b/core_search_facets/src/Plugin/facets/facet_source/CoreNodeSearchFacetSource.php
+index 01d7da4..de5a80a 100644
+--- a/core_search_facets/src/Plugin/facets/facet_source/CoreNodeSearchFacetSource.php
++++ b/core_search_facets/src/Plugin/facets/facet_source/CoreNodeSearchFacetSource.php
+@@ -149,6 +149,7 @@ class CoreNodeSearchFacetSource extends FacetSourcePluginBase implements CoreSea
+       case 'type':
+       case 'uid':
+       case 'langcode':
++      case 'integer':
+       case 'entity_reference':
+         $query_types['string'] = 'core_node_search_string';
+         break;
+@@ -161,7 +162,6 @@ class CoreNodeSearchFacetSource extends FacetSourcePluginBase implements CoreSea
+    * {@inheritdoc}
+    */
+   public function isRenderedInCurrentRequest() {
+-    // @TODO Avoid the use of \Duupal so maybe inject?
+     $request = \Drupal::requestStack()->getMasterRequest();
+     $search_page = $request->attributes->get('entity');
+     if ($search_page instanceof SearchPageInterface) {
+@@ -198,11 +198,16 @@ class CoreNodeSearchFacetSource extends FacetSourcePluginBase implements CoreSea
+   public function getFields() {
+     // Default fields.
+     $facet_fields = $this->getDefaultFields();
+-    // @TODO Only taxonomy term reference for the moment.
++
++    // Get the allowed field types.
++    $allowed_field_types = \Drupal::moduleHandler()->invokeAll('facets_core_allowed_field_types', array($field_types = []));
++
+     // Get the current field instances and detect if the field type is allowed.
+     $fields = FieldConfig::loadMultiple();
+     foreach ($fields as $field) {
+-      if ($field->getFieldStorageDefinition()->getSetting('target_type') == 'taxonomy_term') {
++      // Verify if the target type is allowed for entity reference fields,
++      // otherwise verify the field type(i.e. integer, float...).
++      if (in_array($field->getFieldStorageDefinition()->getSetting('target_type'), $allowed_field_types) || in_array($field->getFieldStorageDefinition()->getType(), $allowed_field_types)) {
+         /** @var \Drupal\field\Entity\FieldConfig $field */
+         if (!array_key_exists($field->getName(), $facet_fields)) {
+           $facet_fields[$field->getName()] = $this->t('@label', ['@label' => $field->getLabel()]);
+@@ -267,7 +272,18 @@ class CoreNodeSearchFacetSource extends FacetSourcePluginBase implements CoreSea
+     else {
+       // Gets field info, finds table name and field name.
+       $table = "node__{$field_name}";
+-      $column = $facet->getFieldIdentifier() . '_target_id';
++      // The column name will be different depending on the field type.
++      // The column name is always the fields machine name, suffixed with
++      // '_value'. Entity reference fields change that suffix into '_target_id'.
++      $field_config = FieldStorageConfig::loadByName('node', $facet->getFieldIdentifier());
++      $field_type = $field_config->getType();
++      if ($field_type == 'entity_reference') {
++        $column = $facet->getFieldIdentifier() . '_target_id';
++      }
++      else {
++        $column = $facet->getFieldIdentifier() . '_value';
++      }
++
+       $query_info['fields'][$field_name . '.' . $column] = array(
+         'table_alias' => $table,
+         'field' => $column,
+diff --git a/core_search_facets/src/Tests/HooksTest.php b/core_search_facets/src/Tests/HooksTest.php
+new file mode 100644
+index 0000000..3e90cfc
+--- /dev/null
++++ b/core_search_facets/src/Tests/HooksTest.php
+@@ -0,0 +1,69 @@
++<?php
++
++/**
++ * @file
++ * Contains \Drupal\core_search_facets\Tests\HooksTest.
++ */
++
++namespace Drupal\core_search_facets\Tests;
++use Drupal\field\Entity\FieldConfig;
++use Drupal\field_ui\Tests\FieldUiTestTrait;
++
++/**
++ * Tests integration of hooks.
++ *
++ * @group core_search_facets
++ */
++class HooksTest extends WebTestBase {
++
++  /**
++   * {@inheritdoc}
++   */
++  public static $modules = array('node', 'search', 'core_search_facets_test_hooks', 'field');
++
++  /**
++   * {@inheritdoc}
++   */
++  public function setUp() {
++    parent::setUp();
++
++    $this->drupalCreateContentType(['type' => 'page']);
++
++    // Create a field of type float.
++    entity_create('field_storage_config', array(
++      'field_name' => 'float',
++      'entity_type' => 'node',
++      'type' => 'float',
++    ))->save();
++
++    // Create an instance of the float field on the "page" content type.
++    FieldConfig::create([
++      'field_name' => 'float',
++      'entity_type' => 'node',
++      'bundle' => 'page',
++      'label' => 'Float Field Label'
++    ])->save();
++
++    // Log in, so we can test all the things.
++    $this->drupalLogin($this->adminUser);
++  }
++
++  /**
++   * Tests various operations via the Facets module admin UI.
++   */
++  public function testHooks() {
++    // Verify that hook_facets_core_allowed_field_types was triggered.
++    // Go to the Add facet page and make sure that returns a 200.
++    $facet_add_page = $this->urlGenerator->generateFromRoute('entity.facets_facet.add_form', [], ['absolute' => TRUE]);
++    $this->drupalGet($facet_add_page);
++    $this->assertResponse(200);
++    // Select the node_search facet source.
++    $this->drupalGet($facet_add_page);
++    $this->drupalPostForm(NULL, ['facet_source_id' => 'core_node_search:node_search'], $this->t('Configure facet source'));
++    // The field appears as expected.
++    $this->assertText('Float Field Label', 'Float Field appears as expected');
++
++
++  }
++
++}
+diff --git a/core_search_facets/src/Tests/WebTestBase.php b/core_search_facets/src/Tests/WebTestBase.php
+new file mode 100644
+index 0000000..5e44a84
+--- /dev/null
++++ b/core_search_facets/src/Tests/WebTestBase.php
+@@ -0,0 +1,102 @@
++<?php
++
++/**
++ * @file
++ * Contains \Drupal\core_search_facets\Tests\WebTestBase.
++ */
++
++namespace Drupal\core_search_facets\Tests;
++
++use Drupal\Core\StringTranslation\StringTranslationTrait;
++use Drupal\simpletest\WebTestBase as SimpletestWebTestBase;
++
++/**
++ * Provides the base class for web tests for Core Search Facets.
++ */
++abstract class WebTestBase extends SimpletestWebTestBase {
++
++  use StringTranslationTrait;
++
++  /**
++   * Exempt from strict schema checking.
++   *
++   * @see \Drupal\Core\Config\Testing\ConfigSchemaChecker
++   *
++   * @var bool
++   */
++  protected $strictConfigSchema = FALSE;
++
++  /**
++   * Modules to enable for this test.
++   *
++   * @var string[]
++   */
++  public static $modules = [
++    'views',
++    'node',
++    'facets',
++    'block',
++    'core_search_facets',
++  ];
++
++  /**
++   * An admin user used for this test.
++   *
++   * @var \Drupal\Core\Session\AccountInterface
++   */
++  protected $adminUser;
++
++  /**
++   * A user without Search / Facet admin permission.
++   *
++   * @var \Drupal\Core\Session\AccountInterface
++   */
++  protected $unauthorizedUser;
++
++  /**
++   * The anonymous user used for this test.
++   *
++   * @var \Drupal\Core\Session\AccountInterface
++   */
++  protected $anonymousUser;
++
++  /**
++   * The URL generator.
++   *
++   * @var \Drupal\Core\Routing\UrlGeneratorInterface
++   */
++  protected $urlGenerator;
++
++  /**
++   * A search index ID.
++   *
++   * @var string
++   */
++  protected $indexId = 'database_search_index';
++
++  /**
++   * {@inheritdoc}
++   */
++  public function setUp() {
++    parent::setUp();
++
++    // Create the users used for the tests.
++    $this->adminUser = $this->drupalCreateUser([
++      'administer search',
++      'administer facets',
++      'access administration pages',
++      'administer nodes',
++      'access content overview',
++      'administer content types',
++      'administer blocks',
++      'search content',
++    ]);
++
++    $this->unauthorizedUser = $this->drupalCreateUser(['access administration pages']);
++    $this->anonymousUser = $this->drupalCreateUser();
++
++    // Get the URL generator.
++    $this->urlGenerator = $this->container->get('url_generator');
++  }
++
++}
+diff --git a/core_search_facets/tests/core_search_facets_test_hooks/core_search_facets_test_hooks.info.yml b/core_search_facets/tests/core_search_facets_test_hooks/core_search_facets_test_hooks.info.yml
+new file mode 100644
+index 0000000..bf94d5c
+--- /dev/null
++++ b/core_search_facets/tests/core_search_facets_test_hooks/core_search_facets_test_hooks.info.yml
+@@ -0,0 +1,9 @@
++name: 'Core Search Facets Hooks Test'
++type: module
++description: 'Support module for core_search_facets tests, tests all the hooks.'
++package: Testing
++dependencies:
++  - facets
++  - core_search_facets
++core: 8.x
++hidden: true
+diff --git a/core_search_facets/tests/core_search_facets_test_hooks/core_search_facets_test_hooks.module b/core_search_facets/tests/core_search_facets_test_hooks/core_search_facets_test_hooks.module
+new file mode 100644
+index 0000000..f35638e
+--- /dev/null
++++ b/core_search_facets/tests/core_search_facets_test_hooks/core_search_facets_test_hooks.module
+@@ -0,0 +1,16 @@
++<?php
++
++/**
++ * @file
++ * Tests all the hooks defined by the core_search_facets module.
++ */
++
++/**
++ * Implements hook_facets_core_allowed_field_types().
++ */
++function core_search_facets_test_hooks_facets_core_allowed_field_types(array $allowed_field_types) {
++  $allowed_field_types[] = 'float';
++
++  return $allowed_field_types;
++}
++
